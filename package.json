@@ -9,7 +9,7 @@
   "scripts": {
     "test": "mocha"
   },
-  "author": "Rico Sta. Cruz <hi@ricostacruz.com>",
+  "author": "Rico Sta. Cruz <rico@ricostacruz.com>",
   "license": "MIT",
   "devDependencies": {
     "psd": "^3.1.0"
