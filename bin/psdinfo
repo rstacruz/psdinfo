@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+var psd = require('psd')
+var argv = process.argv.slice(2)
+var inspect = require('util').inspect
+
+argv.forEach(function (file) {
+  psd.open(file)
+  .then(function (psd) {
+    var data = psd.tree().export()
+    console.log(inspect(data, { depth: null }))
+  })
+  .catch(function (err) {
+    if (err.stack) console.error(err.stack)
+    else console.error(err.message)
+    process.exit(1)
+  })
+})

@@ -1,0 +1,17 @@
+{
+  "name": "psdinfo",
+  "version": "0.0.1",
+  "description": "Shows psd info for a file",
+  "main": "index.js",
+  "bin": {
+    "psdinfo": "bin/psdinfo"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Rico Sta. Cruz <hi@ricostacruz.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "psd": "^3.1.0"
+  }
+}
