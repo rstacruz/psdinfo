@@ -1,10 +1,13 @@
 {
-  "name": "psdtool",
+  "name": "psdinfo",
   "description": "Inspect Photoshop files from the command line",
   "version": "0.0.1",
   "author": "Rico Sta. Cruz <rico@ricostacruz.com>",
   "bugs": {
-    "url": "https://github.com/rstacruz/psdtool/issues"
+    "url": "https://github.com/rstacruz/psdinfo/issues"
+  },
+  "bin": {
+    "psdinfo": "bin/psdinfo"
   },
   "dependencies": {
     "js-yaml": "^3.3.1",
@@ -12,7 +15,7 @@
     "yargs": "^3.14.0"
   },
   "devDependencies": {},
-  "homepage": "https://github.com/rstacruz/psdtool#readme",
+  "homepage": "https://github.com/rstacruz/psdinfo#readme",
   "keywords": [
     "photoshop",
     "psd"
@@ -21,7 +24,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rstacruz/psdtool.git"
+    "url": "git+https://github.com/rstacruz/psdinfo.git"
   },
   "scripts": {
     "test": "mocha"
