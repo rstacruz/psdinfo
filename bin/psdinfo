@@ -97,9 +97,11 @@ function run (files) {
  */
 
 function log (data, heading) {
+  var repr = ''
   if (process.stdout.isTTY) {
-    if (heading) console.log('\033[32m# %s\033[0m', heading)
-    repr = require('js-yaml').dump(data)
+    if (heading) repr += '\033[32m →\033[30m ' + heading + '\033[0m\n\n'
+    repr += '   ' + require('js-yaml').dump(data).replace(/\n/g, '\n   ')
+    repr = '\n' + repr.trim()
   } else {
     repr = JSON.stringify(data, null, 2)
   }
