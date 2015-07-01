@@ -3,14 +3,24 @@
 `npm install -g rstacruz/psdtool`
 
 ```sh
-$ psdtool file.psd
+$ psdtool file.psd --fonts
 
-{ children:
-  [ { type: 'layer',
-      visible: false,
-      opacity: 1,
-      name: 'Layer 1 copy',
-      ...
+# file.psd
+fonts:
+  - DIN-Bold
+  - FreightSansLight
+  - Glosa-Roman
+  - ...
+```
+
+```sh
+$ psdtool file.psd --text
+
+# file.psd
+text:
+  - "Hello"
+  - "This is text from the document"
+  - ...
 ```
 
 <br>
