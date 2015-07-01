@@ -1,17 +1,22 @@
 {
   "name": "psdinfo",
-  "version": "0.0.1",
   "description": "Shows psd info for a file",
-  "main": "index.js",
+  "version": "0.0.1",
+  "author": "Rico Sta. Cruz <rico@ricostacruz.com>",
   "bin": {
     "psdinfo": "bin/psdinfo"
   },
+  "devDependencies": {
+    "js-yaml": "^3.3.1",
+    "psd": "^3.1.0",
+    "yargs": "^3.14.0"
+  },
+  "license": "MIT",
+  "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
-  "author": "Rico Sta. Cruz <rico@ricostacruz.com>",
-  "license": "MIT",
-  "devDependencies": {
-    "psd": "^3.1.0"
+  "dependencies": {
+    "js-yaml": "^3.3.1"
   }
 }

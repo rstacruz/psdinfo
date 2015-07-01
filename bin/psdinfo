@@ -1,17 +1,91 @@
 #!/usr/bin/env node
-var psd = require('psd')
-var argv = process.argv.slice(2)
-var inspect = require('util').inspect
+var PSD = require('psd')
+var argv = require('yargs').argv
 
-argv.forEach(function (file) {
-  psd.open(file)
-  .then(function (psd) {
-    var data = psd.tree().export()
-    console.log(inspect(data, { depth: null }))
+run(argv._)
+
+/*
+ * Returns a summary of the PSD document
+ */
+
+function getSummary (data) {
+  var fonts = pluckOut(data, 'text', function (text) {
+    return text && text.font && text.font.name
   })
-  .catch(function (err) {
-    if (err.stack) console.error(err.stack)
-    else console.error(err.message)
-    process.exit(1)
+
+  return {
+    document: {
+      width: data.document.width,
+      height: data.document.height
+    },
+    fonts: fonts
+  }
+}
+
+/*
+ * Returns texts found in the document
+ */
+
+function getStrings (data) {
+  return pluckOut(data, 'text', function (text) {
+    return text && text.value
   })
-})
+}
+
+function pluckOut (data, parent, fn) {
+  var out = {}
+  eat(data, parent, function (node) {
+    var result = fn(node)
+    out[result] = true
+  })
+  return Object.keys(out).sort()
+}
+
+function eat (object, needle, fn) {
+  for (var key in object) {
+    if (key === needle) {
+      fn(object[key])
+    } else if (typeof object[key] === 'object') {
+      eat(object[key], needle, fn)
+    }
+  }
+}
+
+function run (files) {
+  files.forEach(function (file) {
+    PSD.open(file)
+    .then(function (psd) {
+      return psd.tree().export()
+    })
+    .then(function (data) {
+      if (argv.s || argv.strings) {
+        return getStrings(data)
+      } else if (!argv.f && !argv.full) {
+        return getSummary(data)
+      } else {
+        return data
+      }
+    })
+    .then(function (data) {
+      log(data)
+    })
+    .catch(function (err) {
+      if (err.stack) console.error(err.stack)
+      else console.error(err.message)
+      process.exit(1)
+    })
+  })
+}
+
+/*
+ * Logs a block of JSON data to the console
+ */
+
+function log (data) {
+  if (process.stdout.isTTY) {
+    repr = require('js-yaml').safeDump(data)
+  } else {
+    repr = JSON.stringify(data, null, 2)
+  }
+  console.log(repr)
+}
