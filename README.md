@@ -2,6 +2,8 @@
 
 > Inspect PSD files from the command line.
 
+![](https://www.evernote.com/l/AYOnmuV6pJVANbUk4XIDCtYEUh5XH2onzJkB/image.png)
+
 ```
 npm install -g rstacruz/psdinfo
 ```
