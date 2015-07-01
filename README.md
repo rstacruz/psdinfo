@@ -1,9 +1,13 @@
-# psdtool
+# psdinfo
 
-`npm install -g rstacruz/psdtool`
+> Inspect PSD files from the command line.
+
+```
+npm install -g rstacruz/psdinfo
+```
 
 ```sh
-$ psdtool file.psd --fonts
+$ psdinfo file.psd --fonts
 
 # file.psd
 fonts:
@@ -14,7 +18,7 @@ fonts:
 ```
 
 ```sh
-$ psdtool file.psd --text
+$ psdinfo file.psd --text
 
 # file.psd
 text:
@@ -27,7 +31,7 @@ text:
 
 ## Thanks
 
-**psdtool** © 2015+, Rico Sta. Cruz. Released under the [MIT] License.<br>
+**psdinfo** © 2015+, Rico Sta. Cruz. Released under the [MIT] License.<br>
 Authored and maintained by Rico Sta. Cruz with help from contributors ([list][contributors]).
 
 > [ricostacruz.com](http://ricostacruz.com) &nbsp;&middot;&nbsp;
@@ -35,4 +39,4 @@ Authored and maintained by Rico Sta. Cruz with help from contributors ([list][co
 > Twitter [@rstacruz](https://twitter.com/rstacruz)
 
 [MIT]: http://mit-license.org/
-[contributors]: http://github.com/rstacruz/psdtool/contributors
+[contributors]: http://github.com/rstacruz/psdinfo/contributors
