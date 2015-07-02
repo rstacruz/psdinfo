@@ -2,19 +2,21 @@
 var argv = require('yargs').argv
 var assign = require('util')._extend
 
-if (argv._.length === 0 || argv.help || argv.h) {
-  console.log("Usage:")
-  console.log("  psdinfo FILE.psd [--fonts] [--text] [--doc] [--full]")
-  process.exit(0)
-}
+if (!module.parent) {
+  if (argv._.length === 0 || argv.help || argv.h) {
+    console.log("Usage:")
+    console.log("  psdinfo FILE.psd [--fonts] [--text] [--doc] [--full]")
+    process.exit(0)
+  }
 
-run(argv._)
+  run(argv._)
+}
 
 /*
  * Returns a summary of the PSD document
  */
 
-function getSummary (data) {
+exports.getSummary = function getSummary (data) {
   return {
     document: {
       width: data.document.width,
@@ -23,7 +25,11 @@ function getSummary (data) {
   }
 }
 
-function getFonts (data) {
+/*
+ * Returns fonts in the document
+ */
+
+exports.getFonts = function getFonts (data) {
   return {
     fonts: pluckOut(data, 'text', function (text) {
       return text && text.font && text.font.name
@@ -35,7 +41,7 @@ function getFonts (data) {
  * Returns texts found in the document
  */
 
-function getStrings (data) {
+exports.getStrings = function getStrings (data) {
   return {
     text: pluckOut(data, 'text', function (text) {
       return text && text.value
