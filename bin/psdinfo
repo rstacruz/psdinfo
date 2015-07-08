@@ -1,5 +1,11 @@
 #!/usr/bin/env node
-var argv = require('yargs').argv
+var argv = require('yargs')
+  .option('fonts', { alias: 'f', type: 'boolean' })
+  .option('text', { alias: 't', type: 'boolean' })
+  .option('doc', { alias: 'd', type: 'boolean' })
+  .option('full', { alias: 'F', type: 'boolean' })
+  .argv
+
 var assign = require('util')._extend
 
 if (!module.parent) {
