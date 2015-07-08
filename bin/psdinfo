@@ -16,7 +16,7 @@ if (!module.parent) {
  * Returns a summary of the PSD document
  */
 
-exports.getSummary = function getSummary (data) {
+function getSummary (data) {
   return {
     document: {
       width: data.document.width,
@@ -29,7 +29,7 @@ exports.getSummary = function getSummary (data) {
  * Returns fonts in the document
  */
 
-exports.getFonts = function getFonts (data) {
+function getFonts (data) {
   return {
     fonts: pluckOut(data, 'text', function (text) {
       return text && text.font && text.font.name
@@ -41,7 +41,7 @@ exports.getFonts = function getFonts (data) {
  * Returns texts found in the document
  */
 
-exports.getStrings = function getStrings (data) {
+function getStrings (data) {
   return {
     text: pluckOut(data, 'text', function (text) {
       return text && text.value
@@ -113,3 +113,11 @@ function log (data, heading) {
   }
   console.log(repr)
 }
+
+/*
+ * export
+ */
+
+exports.getFonts = getFonts
+exports.getStrings = getStrings
+exports.getSummary = getSummary
