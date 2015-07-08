@@ -1,7 +1,7 @@
 {
   "name": "psdinfo",
   "description": "Inspect Photoshop files from the command line",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Rico Sta. Cruz <rico@ricostacruz.com>",
   "bin": {
     "psdinfo": "bin/psdinfo"
